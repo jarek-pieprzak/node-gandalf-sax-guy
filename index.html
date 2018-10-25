@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <div id='container'></div>
+    <script>
+      var HOST = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(HOST);
+      var el = document.getElementById('container');
+
+      ws.onmessage = (event) => {
+        el.innerHTML = event.data;
+        console.log(event.data)
+      };
+    </script>
+  </body>
+</html>
