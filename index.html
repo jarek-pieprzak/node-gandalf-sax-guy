@@ -1,15 +1,43 @@
 <html>
-  <body>
-    <div id='container'></div>
-    <script>
-      var HOST = location.origin.replace(/^http/, 'ws')
-      var ws = new WebSocket(HOST);
-      var el = document.getElementById('container');
 
-      ws.onmessage = (event) => {
-        el.innerHTML = event.data;
-        console.log(event.data)
-      };
-    </script>
-  </body>
+<head>
+  <style>
+    body {
+      background-image: url(https://firebasestorage.googleapis.com/v0/b/fir-test-819f6.appspot.com/o/gnadalf.gif?alt=media&token=d6c532ac-0029-4343-8599-c05a54818149);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='container'></div>
+  <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/fir-test-819f6.appspot.com/o/music.mp3?alt=media&token=81e11418-906c-4adb-a1aa-43143174e77f"></audio>
+
+  <script>
+    var HOST = location.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(HOST);
+    var el = document.getElementById('container');
+
+    function play() {
+      var audio = document.getElementById("audio");
+      // audio.play();
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.currentTime = 0
+      }
+    }
+
+    // play();
+
+    ws.onmessage = (event) => {
+      play();
+      console.log(event.data)
+    };
+  </script>
+</body>
+
 </html>

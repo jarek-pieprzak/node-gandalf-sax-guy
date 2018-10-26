@@ -22,4 +22,4 @@ setInterval(() => {
   wss.clients.forEach((client) => {
     client.send("Play.");
   });
-}, 7000);
+}, 7300);
